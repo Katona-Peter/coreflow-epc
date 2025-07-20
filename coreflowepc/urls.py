@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from casestudies.views import my_casestudies
+from casestudy.views import my_casestudy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('casestudies/', my_casestudies, name='casestudies'),
+    path('casestudy/', my_casestudy, name='casestudy'),
 ]
