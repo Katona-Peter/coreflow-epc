@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.views import generic
+from .models import Casestudy
 
-# Create your views here.
-from django.http import HttpResponse
-def my_casestudy(request):
-    return HttpResponse("Hello, blog!")
+class CasestudyList(generic.ListView):
+    queryset = Casestudy.objects.all()
+    template_name = "casestudy_list.html"
