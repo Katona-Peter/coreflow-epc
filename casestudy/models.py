@@ -18,6 +18,7 @@ class Casestudy(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name="casestudy_client")
     location = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="location_casestudy")
     description = models.TextField()
+    excerpt = models.TextField(null=True, blank=True)
     industry = models.ForeignKey(Industry, on_delete=models.CASCADE, related_name="industry_casestudy")
 
     
