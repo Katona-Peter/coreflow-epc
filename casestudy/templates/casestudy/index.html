@@ -5,47 +5,47 @@
 <!-- index.html content starts here -->
 <div class="container-fluid">
     <div class="row">
-
-        <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for casestudy in casestudy_list %}
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="image-container">
-                                <div class="image-flash">
-                                    <p class="author">Client: {{ casestudy.client }}</p>
-                                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card card-blue-margin">
+                        <div class="card-left">
+                            {% load static %}
+                            <img class="card-img-top" src="{% static 'images/default.png' %}" alt="placeholder image">
+                        </div>
+                        <div class="card-right">
+                            <div class="card-title-strip">
+                                <h2>{{ casestudy.title }}</h2>
                             </div>
-                            <a href="#" class="post-link">
-                                <h2 class="card-title">{{ casestudy.title }}</h2>
-                            </a>
-
-                            <hr />
-                            <p class="card-text text-muted h6">to be decided what to put here
-                            </p>
+                            <p>{{ casestudy.description }}</p>
+                            <ul>
+                                <li><strong><i class="fa-solid fa-user"></i>  Client:</strong> {{ casestudy.client }}</li>
+                                <li><strong><i class="fa-solid fa-location-dot"></i>  Location:</strong> {{ casestudy.location }}</li>
+                                <li><strong><i class="fa-solid fa-industry"></i>  Industry:</strong> {{ casestudy.industry }}</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
+                {% if forloop.counter|divisibleby:2 %}
+                    </div><div class="row">
                 {% endif %}
                 {% endfor %}
-
             </div>
         </div>
     </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+            <li>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+            </li>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <li>
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+            </li>
+        {% endif %}
+    </ul>
 </div>
 
 <!-- index.html content ends here -->
